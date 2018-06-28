@@ -18,18 +18,31 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
     if(gamePlaying){
         
         let dice = Math.floor(Math.random() * 6) + 1;
-    
+        let dice1 = Math.floor(Math.random() * 6) + 1;
+        console.log(activePlayer);
+
+        document.querySelector('.dice-tracker').textContent = 'Current dices: ' + dice + '-' + dice1;
         let diceDOM = document.querySelector('.dice');
+        let diceDOM1 = document.querySelector('.dice-1');
         diceDOM.style.display = 'block';
+        diceDOM1.style.display = 'block';
         diceDOM.src = 'img/faces-' + dice + '.png';
+        diceDOM1.src = 'img/faces-' + dice1 + '.png';
         
         
-        if(dice > 1){
-            roundScore += dice;
+        if(dice !== 1 && dice1 !== 1){
+            dicesTotal = dice + dice1
+            roundScore += dicesTotal;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
         } else {
             nextPlayer();
     
+        }
+
+        if(dice === 6 && dice1 === 6){
+            document.querySelector('#current-' + activePlayer).textContent = '0';
+            document.querySelector('#score-' + activePlayer).textContent = '0';
+            nextPlayer();
         }
     }
 
@@ -45,6 +58,7 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
         if (scores[activePlayer] >= 100) {
             document.querySelector('#name-' + activePlayer).textContent = 'YOU WON!';
             document.querySelector('.dice').style.display = 'none';
+            document.querySelector('.dice-1').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
             document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
             gamePlaying = false;
@@ -69,6 +83,7 @@ function nextPlayer () {
         document.querySelector('.player-0-panel').classList.toggle('active');
         document.querySelector('.player-1-panel').classList.toggle('active');
         document.querySelector('.dice').style.display = 'none';
+        document.querySelector('.dice-1').style.display = 'none';
 }
 
 
@@ -79,6 +94,7 @@ function init(){
     gamePlaying = true;
 
     document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.dice-1').style.display = 'none';
 
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';

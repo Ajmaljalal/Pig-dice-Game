@@ -146,10 +146,23 @@ i {
 
 .dice {
     position: absolute;
-    left: 50%;
+    left: 46%;
     top: 178px;
     transform: translateX(-50%);
     height: 100px;
+}
+
+.dice-1{
+    position: absolute;
+    left: 54%;
+    top: 178px;
+    transform: translateX(-50%);
+    height: 100px;
+}
+
+.dice-tracker{
+    font-size: 14px;
+    margin-left: 2px;
 }
 
 .winner { background-color: #f7f7f7; }
