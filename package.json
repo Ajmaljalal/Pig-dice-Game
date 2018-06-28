@@ -1,0 +1,9 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "A dice game",
+  "main": "index.html",
+  "repository": "https://github.com/Ajmaljalal/Pig-dice-Game.git",
+  "author": "Ajmal Jalal",
+  "license": "MIT"
+}
